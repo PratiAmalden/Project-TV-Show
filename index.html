@@ -8,31 +8,31 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
   
-  <body>
-    <h1>TV Episodes</h1>
+  <h1>TV Episodes</h1>
+
+  <!-- New: Search Box -->
+  <input
+    id="search-box"
+    type="text"
+    placeholder="Search episodes by name or summary..."
+    aria-label="Search episodes"
+  />
   
-    <!-- Search Box -->
-    <input
-      id="search-box"
-      type="text"
-      placeholder="Search episodes by name or summary..."
-      aria-label="Search episodes"
-    />
+  <!-- New: Episode Selector Dropdown -->
+  <select id="episode-selector" aria-label="Select an episode">
+    <option value="">Select an episode...</option>
+  </select>
   
-    <!-- Episode Selector Dropdown -->
-    <select id="episode-selector" aria-label="Select an episode">
-      <option value="">Select an episode...</option>
-    </select>
+  <!-- New: Result Count -->
+  <div id="result-count"></div>
   
-    <!-- Result Count -->
-    <div id="result-count"></div>
+  <!-- Existing: Episodes Container -->
+  <div id="root"></div>
   
-    <div id="episodes-container"></div>
+  <div class="source-info">
+    Data originally comes from <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>.
+  </div>
   
-    <div class="source-info">
-      Data originally comes from <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>.
-    </div>
-  </body>
 
   <body>
     <div id="root">

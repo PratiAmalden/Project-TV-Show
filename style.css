@@ -89,79 +89,35 @@ h1 {
 /* Search Box Styling */
 #search-box {
   display: block;
-  width: 100%;
+  width: 80%;
   max-width: 400px;
   margin: 10px auto;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
   outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Dropdown Selector Styling */
 #episode-selector {
   display: block;
-  width: 100%;
+  width: 80%;
   max-width: 400px;
   margin: 10px auto;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
   outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Result Count Styling */
 #result-count {
   text-align: center;
-  margin: 10px auto;
-  font-size: 16px;
+  margin: 10px 0;
+  font-size: 1rem;
   color: #555;
 }
-
-/* Episodes Container */
-.episodes-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-/* Episode Card */
-.episode-card {
-  text-decoration: none;
-  color: inherit;
-  width: 300px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.episode-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-}
-
-.episode-card img {
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid #ddd;
-}
-
-.episode-card h3 {
-  font-size: 18px;
-  margin: 10px;
-  color: #333;
-}
-
-.episode-card p {
-  font-size: 14px;
-  margin: 10px;
-  color: #555;
-}
-
