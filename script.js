@@ -25,6 +25,13 @@ async function fetchEpisodes() {
   return data;
 }
 
+function episodeCode(season, number) {
+  return `S${String(season).padStart(2, "0")}E${String(number).padStart(
+    2,
+    "0"
+  )}`;
+}
+
 function makePageForEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
 
@@ -43,9 +50,8 @@ function makePageForEpisodes(episodeList) {
     episodeCard.classList.add("episode-card");
 
     // Add episode details
-    const episodeCode = `S${String(episode.season).padStart(2, "0")}E${String(episode.number).padStart(2, "0")}`;
     episodeCard.innerHTML = `
-      <h3>${episode.name} - ${episodeCode}</h3>
+      <h3>${episode.name} - ${episodeCode(episode.season, episode.number)}</h3>
       <img src="${episode.image.medium}" alt="${episode.name}">
       <p>${episode.summary}</p>
     `;
@@ -78,10 +84,11 @@ function populateDropdown(episodeList) {
   dropdown.innerHTML = '<option value="">Select an episode...</option>';
 
   episodeList.forEach((episode) => {
-    const episodeCode = `S${String(episode.season).padStart(2, "0")}E${String(episode.number).padStart(2, "0")}`;
     const option = document.createElement("option");
-    option.value = episodeCode;
-    option.textContent = `${episodeCode} - ${episode.name}`;
+    option.value = episode.id;
+    option.textContent = `${episodeCode(episode.season, episode.number)} - ${
+      episode.name
+    }`;
     dropdown.appendChild(option);
   });
 }
@@ -109,7 +116,7 @@ function handleEpisodeSelect(episodeList) {
   } else {
     const selectedEpisode = episodeList.filter(
       (episode) =>
-        `S${String(episode.season).padStart(2, "0")}E${String(episode.number).padStart(2, "0")}` === selectedCode
+        `S${episodeCode(episode.season, episode.number)}` === selectedCode
     );
     makePageForEpisodes(selectedEpisode);
   }
