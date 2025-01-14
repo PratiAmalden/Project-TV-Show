@@ -14,15 +14,6 @@ h1 {
 /* Flex container for episodes */
 .episodes-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  padding: 1rem;
-}
-
-/* Flex container for episodes */
-.episodes-container {
-  display: flex;
   flex-wrap: wrap; /* Allow wrapping to the next row */
   gap: 20px; /* Space between cards */
   justify-content: center; /* Center align the cards */
@@ -84,4 +75,40 @@ h1 {
 
 .source-info a:hover {
   text-decoration: underline;
+}
+
+/* Search Box Styling */
+#search-box {
+  display: block;
+  width: 80%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown Selector Styling */
+#episode-selector {
+  display: block;
+  width: 80%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Result Count Styling */
+#result-count {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #555;
 }
