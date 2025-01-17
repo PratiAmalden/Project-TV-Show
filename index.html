@@ -1,44 +1,93 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
   <head>
+
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | Prati Amalden (pratiamalden)</title>
+
+    <title>TV Show Project</title>
+
     <link href="style.css" rel="stylesheet" />
+
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
   </head>
-  
+
   <body>
+
     <h1>TV Episodes</h1>
 
-    <!-- Search Box -->
-    <input
-      id="search-box"
-      type="text"
-      placeholder="Search episodes by name or summary..."
-      aria-label="Search episodes"
-    />
 
-    <!-- Episode Selector Dropdown -->
-    <select id="episode-selector" aria-label="Select an episode">
-      <option value="">Select an episode...</option>
-    </select>
 
-    <!-- Result Count -->
-    <div id="result-count"></div>
+    <!-- Show Selector Dropdown -->
 
-    <!-- Episodes Container -->
-    <div id="root"></div>
+    <div class="controls">
 
-    <!-- Footer -->
-    <div class="source-info">
-      Data originally comes from <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>.
+      <select id="show-selector" aria-label="Select a TV show">
+
+        <option value="">Select a TV show...</option>
+
+      </select>
+
+
+
+      <!-- Search Box -->
+
+      <input
+
+        id="search-box"
+
+        type="text"
+
+        placeholder="Search episodes by name or summary..."
+
+        aria-label="Search episodes"
+
+      />
+
+
+
+      <!-- Episode Selector Dropdown -->
+
+      <select id="episode-selector" aria-label="Select an episode">
+
+        <option value="">Select an episode...</option>
+
+      </select>
+
     </div>
 
-  <body>
 
-    
-    <!-- Loads YOUR javascript code -->
+
+    <!-- Result Count -->
+
+    <div id="result-count"></div>
+
+
+
+    <!-- Episodes Container -->
+
+    <div id="root" class="episodes-container"></div>
+
+
+
+    <!-- Footer -->
+
+    <div class="source-info">
+
+      Data originally comes from
+
+      <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>.
+
+    </div>
+
+
+
     <script src="script.js"></script>
+
   </body>
+
 </html>

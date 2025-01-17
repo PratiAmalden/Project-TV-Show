@@ -11,12 +11,57 @@ h1 {
   margin: 20px 0;
 }
 
-/* Flex container for episodes */
+/* Controls container */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdowns and Search Box */
+#show-selector,
+#episode-selector,
+#search-box {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s;
+}
+
+#show-selector:focus,
+#episode-selector:focus,
+#search-box:focus {
+  border-color: #007bff;
+}
+
+/* Result Count Styling */
+#result-count {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Episodes container */
 .episodes-container {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping to the next row */
-  gap: 20px; /* Space between cards */
-  justify-content: center; /* Center align the cards */
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
   padding: 20px;
 }
 
@@ -26,9 +71,9 @@ h1 {
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 300px; /* Fixed width for cards */
-  text-decoration: none; /* Remove underline from links */
-  color: inherit; /* Inherit text color */
+  width: 280px;
+  text-decoration: none;
+  color: inherit;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -36,79 +81,40 @@ h1 {
 }
 
 .episode-card:hover {
-  transform: translateY(-5px); /* Lift the card on hover */
+  transform: translateY(-5px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Episode title */
 .episode-card h3 {
   font-size: 1.25rem;
   margin: 15px;
   text-align: center;
 }
 
-/* Episode image */
 .episode-card img {
   width: 100%;
   height: auto;
 }
 
-/* Episode summary */
 .episode-card p {
   font-size: 0.9rem;
   color: #555;
   padding: 0 15px 15px;
 }
 
-/* Footer for source info */
+/* Footer styling */
 .source-info {
-  margin-top: 20px;
   text-align: center;
+  margin: 20px 0;
   font-size: 0.9rem;
   color: #555;
 }
 
 .source-info a {
-  color: #007BFF;
+  color: #007bff;
   text-decoration: none;
 }
 
 .source-info a:hover {
   text-decoration: underline;
-}
-
-/* Search Box Styling */
-#search-box {
-  display: block;
-  width: 80%;
-  max-width: 400px;
-  margin: 10px auto;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  outline: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Dropdown Selector Styling */
-#episode-selector {
-  display: block;
-  width: 80%;
-  max-width: 400px;
-  margin: 10px auto;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  outline: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Result Count Styling */
-#result-count {
-  text-align: center;
-  margin: 10px 0;
-  font-size: 1rem;
-  color: #555;
 }
