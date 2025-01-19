@@ -2,6 +2,7 @@ async function setup() {
   const showSelector = document.getElementById("show-selector");
   const searchBox = document.getElementById("search-box");
   const episodeSelector = document.getElementById("episode-selector");
+  const backToShowsLink = document.getElementById("back-to-shows");
   const rootElem = document.getElementById("root");
 
   let allShows = [];
@@ -12,13 +13,14 @@ async function setup() {
     // Fetch and display all shows on page load
     allShows = await fetchShows();
     if (allShows.length > 0) {
-      displayShows(allShows);
-      populateShowDropdown(allShows);
+      displayShows(allShows); // Display all shows
+      populateShowDropdown(allShows); // Populate the show dropdown
+      updateResultCount(allShows.length); // Update the result count for shows
     } else {
       showNotFound("shows");
     }
 
-    // Event listener for show selection dropdown
+    // Event listener for the show selector
     showSelector.addEventListener("change", async () => {
       const selectedShowId = showSelector.value;
 
@@ -30,28 +32,40 @@ async function setup() {
           episodeSelector.style.display = ""; // Show episode dropdown
           makePageForEpisodes(allEpisodes);
           populateEpisodeDropdown(allEpisodes);
+          backToShowsLink.style.display = ""; // Show the "Back to Shows" link
+          episodeSelector.style.display = ""; // Show the episode selector
         } else {
           showNotFound("episodes");
         }
       } else {
         currentShowId = null;
-        episodeSelector.style.display = "none"; // Hide if no show selected
-        displayShows(allShows);
+        backToShowsLink.style.display = "none"; // Hide the "Back to Shows" link
+        episodeSelector.style.display = "none"; // Hide the episode selector
+        displayShows(allShows); // Show all shows again
       }
     });
 
-    // Event listener for search box
+    // Event listener for the search box
     searchBox.addEventListener("input", () =>
       handleSearch(allShows, allEpisodes, currentShowId)
     );
 
-    // Event listener for episode selection dropdown
+    // Event listener for the episode selector
     episodeSelector.addEventListener("change", () =>
       handleEpisodeSelect(allEpisodes)
     );
 
-    // Hide the episode selector initially
+    // Event listener for the "Back to Shows" link
+    backToShowsLink.addEventListener("click", () => {
+      displayShows(allShows); // Display all shows
+      backToShowsLink.style.display = "none"; // Hide the link
+      showSelector.value = ""; // Reset the show selector
+      episodeSelector.style.display = "none"; // Hide the episode selector
+    });
+
+    // Initially hide the episode selector and "Back to Shows" link
     episodeSelector.style.display = "none";
+    backToShowsLink.style.display = "none";
   } catch (error) {
     rootElem.textContent = "Failed to load shows. Please try again later.";
     console.error(error);
@@ -59,25 +73,28 @@ async function setup() {
 }
 
 async function fetchShows() {
-  const url = "https://api.tvmaze.com/shows";
-  const response = await fetch(url);
-  return response.json();
+  const response = await fetch("https://api.tvmaze.com/shows");
+  if (!response.ok) {
+    throw new Error(`Failed to fetch shows: ${response.status}`);
+  }
+  const shows = await response.json();
+  return shows.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 async function fetchEpisodes(showId) {
-  const url = `https://api.tvmaze.com/shows/${showId}/episodes`;
-  const response = await fetch(url);
-  return response.json();
+  const response = await fetch(
+    `https://api.tvmaze.com/shows/${showId}/episodes`
+  );
+  if (!response.ok) {
+    throw new Error(`Failed to fetch episodes: ${response.status}`);
+  }
+  return await response.json();
 }
 
+// Display the list of shows
 function displayShows(shows) {
   const rootElem = document.getElementById("root");
-  rootElem.innerHTML = ""; // Clear previous content
-
-  if (shows.length === 0) {
-    showNotFound("shows");
-    return;
-  }
+  rootElem.innerHTML = ""; // Clear existing content
 
   shows.forEach((show) => {
     const showCard = document.createElement("div");
@@ -91,18 +108,24 @@ function displayShows(shows) {
     showCard.innerHTML = `
       <h3>${show.name}</h3>
       <img src="${imageUrl}" alt="${show.name}" />
+      <p><strong>Genres:</strong> ${show.genres.join(", ") || "N/A"}</p>
+      <p><strong>Status:</strong> ${show.status}</p>
+      <p><strong>Rating:</strong> ${show.rating?.average || "N/A"}</p>
+      <p><strong>Runtime:</strong> ${show.runtime || "N/A"} mins</p>
       <p>${show.summary || "No summary available."}</p>
     `;
-    rootElem.appendChild(showCard);
+        rootElem.appendChild(showCard);
 
-    // Add event listener for clicking the show card
     showCard.addEventListener("click", () => handleShowClick(show.id));
   });
 
   updateResultCount(shows.length);
+
 }
 
+// Handle clicking on a show to display its episodes
 async function handleShowClick(showId) {
+  const backToShowsLink = document.getElementById("back-to-shows");
   const episodeSelector = document.getElementById("episode-selector");
 
   episodeSelector.style.display = "none"; // Hide until episodes are loaded
@@ -111,6 +134,7 @@ async function handleShowClick(showId) {
     episodeSelector.style.display = ""; // Show episode dropdown
     makePageForEpisodes(episodes);
     populateEpisodeDropdown(episodes);
+    backToShowsLink.style.display = ""; // Show the "Back to Shows" link
   } else {
     showNotFound("episodes");
   }
@@ -119,14 +143,10 @@ async function handleShowClick(showId) {
   showSelector.value = showId; // Set the dropdown to the clicked show
 }
 
+// Render episodes on the page
 function makePageForEpisodes(episodes) {
   const rootElem = document.getElementById("root");
   rootElem.innerHTML = ""; // Clear previous content
-
-  if (!episodes || episodes.length === 0) {
-    showNotFound("episodes");
-    return;
-  }
 
   episodes.forEach((episode) => {
     const episodeCard = document.createElement("div");
@@ -135,9 +155,11 @@ function makePageForEpisodes(episodes) {
     episodeCard.innerHTML = `
       <h4>${formatEpisodeTitle(episode)}</h4>
       <a href="${episode.url}" target="_blank">
-        <img src="${episode.image ? episode.image.medium : ""}" alt="${
-      episode.name
-    }" />
+        <img src="${
+          episode.image
+            ? episode.image.medium
+            : "https://via.placeholder.com/210x295"
+        }" alt="${episode.name}" />
       </a>
       <p>${episode.summary || "No summary available."}</p>
     `;
@@ -145,25 +167,20 @@ function makePageForEpisodes(episodes) {
   });
 
   updateResultCount(episodes.length);
+
 }
 
+// Format the episode title
 function formatEpisodeTitle(episode) {
   const season = episode.season.toString().padStart(2, "0");
   const number = episode.number.toString().padStart(2, "0");
   return `S${season}E${number} - ${episode.name}`;
 }
 
+// Populate the show selector dropdown
 function populateShowDropdown(shows) {
   const showSelector = document.getElementById("show-selector");
   showSelector.innerHTML = '<option value="">Select a TV show...</option>';
-
-  if (shows.length === 0) {
-    const option = document.createElement("option");
-    option.value = "";
-    option.textContent = "No shows found";
-    showSelector.appendChild(option);
-    return;
-  }
 
   shows.forEach((show) => {
     const option = document.createElement("option");
@@ -173,6 +190,7 @@ function populateShowDropdown(shows) {
   });
 }
 
+// Populate the episode selector dropdown
 function populateEpisodeDropdown(episodes) {
   const episodeSelector = document.getElementById("episode-selector");
   episodeSelector.innerHTML = '<option value="">Select an episode...</option>';
@@ -184,7 +202,7 @@ function populateEpisodeDropdown(episodes) {
     episodeSelector.appendChild(option);
   });
 }
-
+// Search functionality for shows and episodes
 function handleSearch(allShows, allEpisodes, currentShowId) {
   const searchBox = document.getElementById("search-box");
   const query = searchBox.value.toLowerCase();
@@ -201,7 +219,8 @@ function handleSearch(allShows, allEpisodes, currentShowId) {
     const filteredShows = allShows.filter(
       (show) =>
         show.name.toLowerCase().includes(query) ||
-        (show.summary && show.summary.toLowerCase().includes(query))
+        (show.summary && show.summary.toLowerCase().includes(query)) ||
+        show.genres.some((genre) => genre.toLowerCase().includes(query))
     );
     displayShows(filteredShows);
     populateShowDropdown(filteredShows); // Dynamically update the show dropdown
@@ -222,12 +241,13 @@ function handleEpisodeSelect(episodes) {
     }
   }
 }
-
+// Update the result count
 function updateResultCount(count) {
   const resultCountElem = document.getElementById("result-count");
   resultCountElem.textContent = count > 0 ? `Displaying ${count} item(s)` : "";
 }
 
+// Show a "not found" message
 function showNotFound(type) {
   const rootElem = document.getElementById("root");
   rootElem.innerHTML = `<p>No ${type} found.</p>`;

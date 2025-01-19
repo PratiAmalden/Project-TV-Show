@@ -1,62 +1,99 @@
+/* General Body Styling */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f5f5f5;
+  font-family: 'Arial', Helvetica, sans-serif;
+  background-color: #f5f5f5; /* Light gray background */
+  color: #333; /* Darker text color */
   margin: 0;
   padding: 0;
-  color: #333;
+  line-height: 1.6;
 }
 
+/* Header Title */
 h1 {
   text-align: center;
+  font-size: 2.5rem;
   margin: 20px 0;
+  color: #4a90e2; /* Soft blue */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Controls container */
+/* Controls Container */
 .controls {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
   padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  background-color: #ffffff; /* White background */
+  border-bottom: 2px solid #cce4f6; /* Light blue separator */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Dropdowns and Search Box */
-#show-selector,
-#episode-selector,
-#search-box {
-  width: 100%;
-  max-width: 300px;
+/* Select Dropdowns */
+select {
   padding: 10px;
   font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 2px solid #cce4f6; /* Light blue border */
+  border-radius: 8px;
+  background-color: #ffffff; /* White background */
+  color: #333; /* Dark text */
+  transition: 0.3s;
+}
+
+select:hover {
+  border-color: #4a90e2; /* Hover effect - Soft blue border */
+}
+
+select:focus {
   outline: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s;
+  box-shadow: 0 0 5px #4a90e2;
 }
 
-#show-selector:focus,
-#episode-selector:focus,
-#search-box:focus {
-  border-color: #007bff;
-}
-
-/* Result Count Styling */
-#result-count {
-  width: 100%;
-  text-align: center;
+/* Search Box */
+input[type="text"] {
+  padding: 10px;
   font-size: 1rem;
-  color: #555;
-  margin-top: 10px;
+  border: 2px solid #cce4f6; /* Light blue border */
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #333;
+  transition: 0.3s;
+  width: 300px;
 }
 
-/* Episodes container */
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 5px #4a90e2;
+}
+
+/* Back to Shows Button */
+#back-to-shows {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 2px solid #cce4f6; /* Light blue border */
+  border-radius: 8px;
+  background-color: #4a90e2; /* Soft blue background */
+  color: #ffffff; /* White text */
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#back-to-shows:hover {
+  background-color: #6aa3ec; /* Hover effect - Lighter blue */
+  border-color: #6aa3ec;
+}
+
+/* Result Count */
+#result-count {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4a90e2; /* Soft blue */
+  margin: 20px 0;
+}
+
+/* Episodes Container */
 .episodes-container {
   display: flex;
   flex-wrap: wrap;
@@ -65,56 +102,118 @@ h1 {
   padding: 20px;
 }
 
-/* Episode card styling */
+/* Episode Card Styling */
 .episode-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 280px;
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
+  background-color: #ffffff; /* White card background */
+  border: 2px solid #cce4f6; /* Light blue border */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Fixed width for consistency */
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .episode-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.episode-card h3 {
-  font-size: 1.25rem;
-  margin: 15px;
+/* Episode Title */
+.episode-card h4 {
   text-align: center;
+  font-size: 1.2rem;
+  margin: 15px 0;
+  color: #4a90e2; /* Soft blue */
 }
 
+/* Episode Image */
 .episode-card img {
   width: 100%;
   height: auto;
+  display: block;
 }
 
+/* Episode Summary */
 .episode-card p {
+  padding: 10px 15px;
+  color: #555; /* Medium gray */
   font-size: 0.9rem;
-  color: #555;
-  padding: 0 15px 15px;
+  line-height: 1.4;
 }
 
-/* Footer styling */
+/* Show Cards */
+.show-card {
+  background-color: #ffffff; /* White background */
+  border: 2px solid #cce4f6;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  overflow: hidden;
+  margin: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.show-card:hover {
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Show Title */
+.show-card h3 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 15px 0;
+  color: #4a90e2; /* Soft blue */
+}
+
+/* Show Image */
+.show-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Show Information */
+.show-card p {
+  padding: 10px 15px;
+  color: #555; /* Medium gray */
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Source Info */
 .source-info {
   text-align: center;
-  margin: 20px 0;
   font-size: 0.9rem;
-  color: #555;
+  color: #555; /* Medium gray */
+  margin: 20px 0;
 }
 
 .source-info a {
-  color: #007bff;
+  color: #4a90e2; /* Soft blue */
   text-decoration: none;
+  font-weight: bold;
 }
 
 .source-info a:hover {
   text-decoration: underline;
+}
+
+/* Add Responsiveness */
+@media (max-width: 768px) {
+  input[type="text"],
+  select {
+    width: 100%;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .episode-card,
+  .show-card {
+    width: 100%;
+  }
 }
