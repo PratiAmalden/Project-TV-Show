@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TV Show Project | Prati Amalden (pratiamalden)</title>
   <link href="style.css" rel="stylesheet" />
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-  <h1>TV Episodes</h1>
+  <header class="main-header">
+    <h1>TV Episodes</h1>
+  </header>
 
   <div class="controls">
     <select id="show-selector" aria-label="Select a TV show">
@@ -26,17 +27,18 @@
       <option value="">Select an episode...</option>
     </select>
 
-    <button id="back-to-shows">Back to Shows</button>
+    <button id="back-to-shows" style="display: none;">Back to Shows</button>
   </div>
 
-  <div id="result-count"></div>
+  <div id="result-count" class="result-count"></div>
 
   <div id="root" class="episodes-container"></div>
 
-  <div class="source-info">
+  <footer class="source-info">
     Data originally comes from
-    <a href="https://www.tvmaze.com/" target="_blank">TVMaze.com</a>.
-  </div>
+    <a href="https://www.tvmaze.com/" target="_blank" rel="noopener">TVMaze.com</a>.
+  </footer>
 
   <script src="script.js"></script>
 </body>
+</html>
