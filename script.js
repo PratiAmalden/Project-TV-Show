@@ -87,16 +87,16 @@ function displayShows(shows) {
     const showCard = document.createElement("div");
     showCard.className = "show-card";
     showCard.innerHTML = `
-      <h3>${show.name}</h3>
-      <img src="${
-        show.image?.medium || "https://via.placeholder.com/210x295"
-      }" alt="${show.name}">
-      <p><strong>Genres:</strong> ${show.genres.join(", ") || "N/A"}</p>
-      <p><strong>Status:</strong> ${show.status}</p>
-      <p><strong>Rating:</strong> ${show.rating?.average || "N/A"}</p>
-      <p><strong>Runtime:</strong> ${show.runtime || "N/A"} mins</p>
-      <p>${show.summary || "No summary available."}</p>
-    `;
+    <h3>${show.name}</h3>
+    <img src="${show.image?.medium || "placeholder.jpg"}" alt="${
+      show.name
+    }" width="300" height="400" loading="lazy">
+    <p><strong>Genres:</strong> ${show.genres.join(", ") || "N/A"}</p>
+    <p><strong>Status:</strong> ${show.status}</p>
+    <p><strong>Rating:</strong> ${show.rating?.average || "N/A"}</p>
+    <p><strong>Runtime:</strong> ${show.runtime || "N/A"} mins</p>
+    <p>${show.summary || "No summary available."}</p>
+  `;
     showCard.addEventListener("click", () => handleShowClick(show.id));
     rootElem.appendChild(showCard);
   });
