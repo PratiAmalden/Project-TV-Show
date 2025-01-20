@@ -1,62 +1,103 @@
+/* General Styling */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f5f5f5;
+  font-family: 'Arial', sans-serif;
+  background-color: #F7F7F7; /* Very light gray */
+  color: #212121; /* Almost black */
   margin: 0;
   padding: 0;
-  color: #333;
+  line-height: 1.6;
 }
 
-h1 {
+/* Header */
+.main-header {
   text-align: center;
-  margin: 20px 0;
+  padding: 20px;
+  background-color: #1E3E5A; /* Deep teal */
+  color: #ffffff; /* White text */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Controls container */
+.main-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+}
+
+/* Controls Container */
 .controls {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
   padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* White */
+  border-bottom: 2px solid #E0E0E0; /* Light gray border */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Dropdowns and Search Box */
-#show-selector,
-#episode-selector,
-#search-box {
-  width: 100%;
-  max-width: 300px;
+/* Select Dropdowns */
+select {
   padding: 10px;
   font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 2px solid #BDBDBD; /* Light gray border */
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #212121; /* Text color */
+  width: 250px;
+  transition: 0.3s ease;
+}
+
+select:hover,
+select:focus {
+  border-color: #1E3E5A; /* Deep teal */
+  box-shadow: 0 0 5px rgba(32, 99, 155, 0.4);
   outline: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s;
 }
 
-#show-selector:focus,
-#episode-selector:focus,
-#search-box:focus {
-  border-color: #007bff;
-}
-
-/* Result Count Styling */
-#result-count {
-  width: 100%;
-  text-align: center;
+/* Search Box */
+input[type="text"] {
+  padding: 10px;
   font-size: 1rem;
-  color: #555;
-  margin-top: 10px;
+  border: 2px solid #BDBDBD; /* Light gray border */
+  border-radius: 8px;
+  width: 300px;
+  transition: 0.3s ease;
 }
 
-/* Episodes container */
+input[type="text"]:focus {
+  border-color: #1E3E5A;
+  box-shadow: 0 0 5px rgba(32, 99, 155, 0.4);
+  outline: none;
+}
+
+/* Back to Shows Button */
+#back-to-shows {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 2px solid #1E3E5A;
+  border-radius: 8px;
+  background-color: #1E3E5A;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#back-to-shows:hover {
+  background-color: #173A5E; /* Darker teal */
+  border-color: #173A5E;
+}
+
+/* Result Count */
+.result-count {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1E3E5A; /* Deep teal */
+  margin: 20px 0;
+}
+
+/* Episodes and Shows Container */
 .episodes-container {
   display: flex;
   flex-wrap: wrap;
@@ -65,56 +106,95 @@ h1 {
   padding: 20px;
 }
 
-/* Episode card styling */
+/* Card Styling */
+.show-card,
 .episode-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 280px;
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
+  background-color: #ffffff;
+  border: 2px solid #E0E0E0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  width: 300px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 
+.show-card:hover,
 .episode-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-color: #b4bec1; 
 }
 
-.episode-card h3 {
-  font-size: 1.25rem;
-  margin: 15px;
+/* Titles */
+.show-card h3,
+.episode-card h4 {
   text-align: center;
+  font-size: 1.3rem;
+  margin: 15px 0;
+  color: #212121; /* Almost black */
 }
 
+/* Images */
+.show-card img,
 .episode-card img {
   width: 100%;
   height: auto;
+  object-fit: cover; /* Crop if necessary to fit */
+  display: block;
 }
 
+/* Information Text */
+.show-card p,
 .episode-card p {
+  padding: 10px;
+  color: #424242; /* Dark gray */
   font-size: 0.9rem;
-  color: #555;
-  padding: 0 15px 15px;
+  line-height: 1.5;
 }
 
-/* Footer styling */
+/* Footer */
 .source-info {
   text-align: center;
-  margin: 20px 0;
   font-size: 0.9rem;
-  color: #555;
+  color: #424242;
+  margin: 20px 0;
 }
 
 .source-info a {
-  color: #007bff;
+  color: #1E3E5A; 
   text-decoration: none;
+  font-weight: bold;
 }
 
 .source-info a:hover {
   text-decoration: underline;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input[type="text"],
+  select {
+    width: 100%;
+  }
+
+  .show-card,
+  .episode-card {
+    width: 100%;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
