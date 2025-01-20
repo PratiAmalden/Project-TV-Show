@@ -3,19 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore TV shows and episodes. Search for shows, browse episodes, and find your favorite content easily. Powered by TVMaze." />
   <title>TV Show Project | Prati Amalden (pratiamalden)</title>
   <link href="style.css" rel="stylesheet" />
 </head>
 <body>
   <header class="main-header">
-    <h1>TV Episodes</h1>
+    <h1>TV Show Explorer</h1>
   </header>
 
-  <div class="controls">
+  <nav class="controls" aria-label="TV Show Controls">
+    <label for="show-selector" class="visually-hidden">Choose a TV show</label>
     <select id="show-selector" aria-label="Select a TV show">
       <option value="">Select a TV show...</option>
     </select>
 
+    <label for="search-box" class="visually-hidden">Search for shows or episodes</label>
     <input
       id="search-box"
       type="text"
@@ -23,20 +26,27 @@
       aria-label="Search shows"
     />
 
+    <label for="episode-selector" class="visually-hidden">Choose an episode</label>
     <select id="episode-selector" aria-label="Select an episode" style="display: none;">
       <option value="">Select an episode...</option>
     </select>
 
-    <button id="back-to-shows" style="display: none;">Back to Shows</button>
-  </div>
+    <button id="back-to-shows" style="display: none;" aria-label="Back to TV shows">
+      Back to Shows
+    </button>
+    
+    <div id="result-count" class="result-count" aria-live="polite"></div>
 
-  <div id="result-count" class="result-count"></div>
+  </nav>
 
-  <div id="root" class="episodes-container"></div>
+  <main id="root" class="episodes-container" role="main">
+    <!-- Content dynamically loaded here -->
+  </main>
+
 
   <footer class="source-info">
     Data originally comes from
-    <a href="https://www.tvmaze.com/" target="_blank" rel="noopener">TVMaze.com</a>.
+    <a href="https://www.tvmaze.com/" target="_blank" rel="noopener noreferrer">TVMaze.com</a>.
   </footer>
 
   <script src="script.js"></script>

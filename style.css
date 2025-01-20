@@ -12,7 +12,7 @@ body {
 .main-header {
   text-align: center;
   padding: 20px;
-  background-color: #20639B; /* Deep teal */
+  background-color: #1E3E5A; /* Deep teal */
   color: #ffffff; /* White text */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -50,7 +50,7 @@ select {
 
 select:hover,
 select:focus {
-  border-color: #20639B; /* Deep teal */
+  border-color: #1E3E5A; /* Deep teal */
   box-shadow: 0 0 5px rgba(32, 99, 155, 0.4);
   outline: none;
 }
@@ -66,7 +66,7 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-  border-color: #20639B;
+  border-color: #1E3E5A;
   box-shadow: 0 0 5px rgba(32, 99, 155, 0.4);
   outline: none;
 }
@@ -75,9 +75,9 @@ input[type="text"]:focus {
 #back-to-shows {
   padding: 10px 20px;
   font-size: 1rem;
-  border: 2px solid #20639B;
+  border: 2px solid #1E3E5A;
   border-radius: 8px;
-  background-color: #20639B;
+  background-color: #1E3E5A;
   color: #ffffff;
   cursor: pointer;
   transition: 0.3s ease;
@@ -93,7 +93,7 @@ input[type="text"]:focus {
   text-align: center;
   font-size: 1.2rem;
   font-weight: bold;
-  color: #20639B; /* Deep teal */
+  color: #1E3E5A; /* Deep teal */
   margin: 20px 0;
 }
 
@@ -122,7 +122,7 @@ input[type="text"]:focus {
 .episode-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  border-color: #ffafcc; /* Gold-ish orange for hover effect */
+  border-color: #b4bec1; 
 }
 
 /* Titles */
@@ -155,12 +155,12 @@ input[type="text"]:focus {
 .source-info {
   text-align: center;
   font-size: 0.9rem;
-  color: #424242; /* Dark gray */
+  color: #424242;
   margin: 20px 0;
 }
 
 .source-info a {
-  color: #20639B; /* Deep teal */
+  color: #1E3E5A; 
   text-decoration: none;
   font-weight: bold;
 }
@@ -185,4 +185,15 @@ input[type="text"]:focus {
   .episode-card {
     width: 100%;
   }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
